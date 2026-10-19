@@ -1,5 +1,25 @@
 import { z } from "zod";
 
+// Authentication validation
+export const CredentialsSchema = z.object({
+  email: z.email({
+    error: "Enter a valid email.",
+  }),
+  password: z.string().min(6, {
+    error: "The password needs at least 6 characters.",
+  }),
+});
+
+// Error handling
+export function problemFor(e: unknown) {
+  const m = e instanceof Error ? e.message : "";
+  if (m === "timeout") return "The server took too long.";
+  if (m === "offline") return "The server did not answer. Check it is running.";
+  if (m === "404") return "That is not there any more.";
+  return "Something went wrong.";
+}
+
+// Project post validation
 export const ProjectPostSchema = z.object({
   title: z
     .string()
@@ -12,10 +32,9 @@ export const ProjectPostSchema = z.object({
     .min(2000)
     .max(2100, { error: "Enter a year like 2026." }),
 
-  summary: z
-    .string()
-    .trim()
-    .min(10, { error: "The description needs at least 10 characters." }),
+  summary: z.string().trim().min(10, {
+    error: "The description needs at least 10 characters.",
+  }),
 
   image: z
     .instanceof(File)
