@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791175612914,
+      "tag": "0000_create-projects",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791175873770,
+      "tag": "0001_storage-project-images",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791177329220,
+      "tag": "0002_add-storage-policies",
+      "breakpoints": true
+    }
+  ]
+}
